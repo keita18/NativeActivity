@@ -1,0 +1,403 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"acceror",
+				"accelerometerSensor"
+			],
+			[
+				"accele",
+				"accelerometerSensor"
+			],
+			[
+				"ASensorEvent",
+				"ASensorEventQueue_setEventRate"
+			],
+			[
+				"accelero",
+				"accelerometerSensor"
+			],
+			[
+				"eglDest",
+				"eglDestroySurface"
+			],
+			[
+				"conte",
+				"context"
+			],
+			[
+				"ANativeWind",
+				"ANativeWindow_setBuffersGeometry"
+			],
+			[
+				"struct",
+				"struct"
+			],
+			[
+				"for",
+				"for	For Loop"
+			],
+			[
+				"engine",
+				"engine_handle_cmd"
+			],
+			[
+				"engine_handle_",
+				"engine_handle_input"
+			],
+			[
+				"androi",
+				"android_app"
+			],
+			[
+				"sensor",
+				"sensorManager"
+			],
+			[
+				"valu",
+				"value2"
+			],
+			[
+				"value",
+				"value1"
+			],
+			[
+				"va",
+				"value2"
+			],
+			[
+				"m_e",
+				"m_editText3"
+			],
+			[
+				"m_editTe",
+				"m_editText2"
+			],
+			[
+				"m_edi",
+				"m_editText1"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"evernote",
+				"Evernote: Search Note"
+			],
+			[
+				"package cont",
+				"Package Control: Remove Package"
+			],
+			[
+				"package control",
+				"Package Control: Install Package"
+			],
+			[
+				"package con insta",
+				"Package Control: Install Package"
+			],
+			[
+				"color",
+				"ColorSchemeSelector: Select Color Scheme"
+			],
+			[
+				"colorsce",
+				"ColorSchemeSelector: Select Color Scheme"
+			],
+			[
+				"Run",
+				"Build: Run"
+			],
+			[
+				"Package ",
+				"Package Control: List Packages"
+			],
+			[
+				"pack inst",
+				"Package Control: Install Package"
+			],
+			[
+				"package enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"package insta",
+				"Package Control: Install Package"
+			],
+			[
+				"package ins",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"Package",
+				"Package Control: Install Package"
+			],
+			[
+				"Page",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: #ifndef … #define … #endif"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 219.0,
+		"history":
+		[
+			"view.run_command('example')",
+			"ls",
+			"which",
+			"which ctags",
+			"sublime.log_commands(True)",
+			"tanji",
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"clang_format",
+			"clang-format",
+			"test",
+			"clang-format"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/tanjike/Dropbox/preference/Sublime Text 3/Packages/User/plugin/example.py",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Android-Examples/assets/physics_linejoint.nut",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Android-Examples/assets/physics_gearjoint.nut",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-Android/jni/emo/Engine.h",
+		"/Users/tanjike/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/tanjike/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-Android/jni/emo/JavaGlue.cpp",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-iOS/libs/libpng/png.h",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-iOS/libs/libpng/png.c",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-iOS/libs/emo/EmoImage.m",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-Android/jni/libpng/png.h",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-Android/jni/libpng/png.c",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-Android/jni/Application.mk",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-Android/jni/main.cpp",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-Android/jni/native_app_glue.c",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-Android/jni/Box2D/Android.mk",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-Android/jni/emo/Image.cpp",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-Android/buildjar.xml",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-Android/assets/runtime.nut",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Android-Examples/assets/runtime.nut",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Android-Examples/assets/physics_add_example.nut",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-Android/jni/sqlite/sqlite3.h",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-Android/jni/emo/Image.h",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Android-Examples/src/com/emo_framework/examples/Launcher.java",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Android-Examples/bin/AndroidManifest.xml",
+		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Emo-Android/jni/Android.mk",
+		"/Users/tanjike/Dropbox/proj/emo-framework.sublime-project",
+		"/Users/tanjike/Dropbox/proj/adt_eclipse_work/android_work.sublime-project"
+	],
+	"find":
+	{
+		"height": 22.0
+	},
+	"find_in_files":
+	{
+		"height": 91.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"animating",
+			"colorspace",
+			"png_colorspace",
+			"assetManager",
+			"gear@2x",
+			"A.png",
+			"SQInteger",
+			"emacs",
+			"ctrl+f",
+			"png",
+			"loadPngFromBytes",
+			"PNG_LIBPNG_VER_STRING",
+			"png_set_read_fn",
+			"asset_read",
+			"loadPngFromAsset",
+			"name",
+			"emoDrawableCreateSprite",
+			"cpp",
+			"sprite",
+			"getResourceName",
+			"graphics",
+			"to_dir",
+			"assets",
+			"ANDROID_GRAPHICS_DIR",
+			"graphics/",
+			"loadPngSizeFromAsset",
+			"ball.png",
+			"app_dumy",
+			"engine_draw_frame",
+			"initDraw",
+			"display",
+			"gl_cull_face",
+			"display",
+			"DISPLAY",
+			"Display",
+			"display",
+			"Display",
+			"display",
+			"Display",
+			"display",
+			"emacs",
+			"ctrl+f",
+			"AmotionEvent_getY",
+			"main"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 29.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 86.0
+	},
+	"output.find_results":
+	{
+		"height": 86.0
+	},
+	"project": "NativeActivity.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"android",
+				"Emo-Android/jni/Android.mk"
+			],
+			[
+				".mk",
+				"NativeActivityTest/jni/Android.mk"
+			],
+			[
+				"android.mk",
+				"NativeActivityTest/jni/Android.mk"
+			],
+			[
+				"androidmanifest",
+				"NativeActivityTest/AndroidManifest.xml"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Users/tanjike/Dropbox/proj/adt_eclipse_work/android_work.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 201.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
