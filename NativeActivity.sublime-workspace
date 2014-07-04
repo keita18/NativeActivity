@@ -83,6 +83,30 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "jni/main.c",
+			"settings":
+			{
+				"buffer_size": 10177,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "jni/Application.mk",
+			"settings":
+			{
+				"buffer_size": 27,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "jni/Android.mk",
+			"settings":
+			{
+				"buffer_size": 899,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -90,6 +114,18 @@
 		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"pack list",
+				"Package Control: List Packages"
+			],
+			[
+				"package control ",
+				"Package Control: List Packages"
+			],
+			[
+				"package con",
+				"Package Control: Install Package"
+			],
 			[
 				"evernote",
 				"Evernote: Search Note"
@@ -218,7 +254,7 @@
 	],
 	"find":
 	{
-		"height": 22.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -294,8 +330,99 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "jni/main.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10177,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8379,
+								8379
+							]
+						],
+						"settings":
+						{
+							"easy_motion_mode": false,
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3029.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "jni/Application.mk",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 27,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "jni/Android.mk",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 899,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		}
 	],
