@@ -21,13 +21,18 @@
 
 #include <EGL/egl.h>
 #include <GLES/gl.h>
+#include <math.h>
 
 #include <android/sensor.h>
 #include <android/log.h>
 #include <android_native_app_glue.h>
 
+#define TAG "native-activity"
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "native-activity", __VA_ARGS__))
 #define LOGW(...) ((void)__android_log_print(ANDROID_LOG_WARN, "native-activity", __VA_ARGS__))
+#define LOGE(...) ((void)__android_log_print(ANDROID_LOG_ERROR, "native-activity", __VA_ARGS__))
+
+static float angle = 0;
 
 /**
  * Our saved state data.
@@ -57,17 +62,95 @@ struct engine {
     struct saved_state state;
 };
 
+void gluPerspective(double fovy, double aspect, double zNear, double zFar) {
+    GLfloat xmin, xmax, ymin, ymax;
+    ymax = zNear * tan(fovy * M_PI / 360.0);
+    ymin = -ymax;
+    xmin = ymin * aspect;
+    xmax = ymax * aspect;
+    glFrustumf(xmin, xmax, ymin, ymax, zNear, zFar);
+}
+
+//頂点リスト
+#define LENGTH (15)
+short triangleBuffer[] = {
+    -LENGTH / 2,            -LENGTH / 2,            0,
+    LENGTH - LENGTH / 2,    -LENGTH / 2,            0,
+    -LENGTH / 2,            LENGTH - LENGTH / 2,    0,
+    LENGTH -LENGTH / 2,    LENGTH - LENGTH / 2,    0,
+};
+
+float colorBuffer[] = {
+    1.0, 0.0, 0.0, 1.0,
+    0.0, 1.0, 0.0, 1.0,
+    0.0, 0.0, 1.0, 1.0,
+    0.5, 0.5, 0.0, 1.0,
+};
+
+void initDraw(struct engine* engine)
+{
+    glDisable(GL_LIGHTING);
+    glDisable(GL_CULL_FACE);
+    glDisable(GL_DEPTH_BUFFER_BIT);
+    glDisable(GL_DEPTH_TEST);
+    glClearColor(.7f, .7f, .9f, 1.f);
+    glShadeModel(GL_SMOOTH);
+
+    float ratio = (float) engine->width / (float) engine->height;
+    glViewport(0, 0, (int)engine->width, (int)engine->height);
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(40.0, ratio , 0.1, 100 );
+};
+
+void drawBox(void)
+{
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glTranslatef(0.0, 0.0, -50.0);
+
+    angle = (angle + 2);
+    if ( angle > 360 )
+    {
+        angle = 0;
+    }
+
+    //角度設定
+    glRotatef(angle, 0, 0, 1.0f);
+    //バッファーをクリア
+    glClear(GL_COLOR_BUFFER_BIT);
+    //頂点リスト指定
+    glVertexPointer(3, GL_SHORT, 0, triangleBuffer);
+    //頂点リスト有効化
+    glEnableClientState(GL_VERTEX_ARRAY);
+    //頂点リスト指定
+    glColorPointer(4, GL_FLOAT, 0, colorBuffer);
+    //頂点カラーリストの有効化
+    glEnableClientState(GL_COLOR_ARRAY);
+    //三角形描画
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    glDisableClientState(GL_VERTEX_ARRAY);
+}
+
 /**
  * Initialize an EGL context for the current display.
  */
 static int engine_init_display(struct engine* engine) {
     // initialize OpenGL ES and EGL
 
+    EGLint w, h, dummy, format;
+    EGLint numConfigs;
+    EGLConfig config;
+    EGLSurface surface;
+    EGLContext context;
+
     /*
      * Here specify the attributes of the desired configuration.
      * Below, we select an EGLConfig with at least 8 bits per color
      * component compatible with on-screen windows
      */
+     //有効にするパラメータ
     const EGLint attribs[] = {
             EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
             EGL_BLUE_SIZE, 8,
@@ -75,12 +158,6 @@ static int engine_init_display(struct engine* engine) {
             EGL_RED_SIZE, 8,
             EGL_NONE
     };
-    EGLint w, h, dummy, format;
-    EGLint numConfigs;
-    EGLConfig config;
-    EGLSurface surface;
-    EGLContext context;
-
     EGLDisplay display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
 
     eglInitialize(display, 0, 0);
@@ -96,11 +173,13 @@ static int engine_init_display(struct engine* engine) {
      * ANativeWindow buffers to match, using EGL_NATIVE_VISUAL_ID. */
     eglGetConfigAttrib(display, config, EGL_NATIVE_VISUAL_ID, &format);
 
+    //nativeActivityへバッファを設定
     ANativeWindow_setBuffersGeometry(engine->app->window, 0, 0, format);
 
     surface = eglCreateWindowSurface(display, config, engine->app->window, NULL);
     context = eglCreateContext(display, config, NULL, NULL);
 
+    //EGLレンダリングコンテキストをEGLサーフェイスにアタッチする    
     if (eglMakeCurrent(display, surface, surface, context) == EGL_FALSE) {
         LOGW("Unable to eglMakeCurrent");
         return -1;
@@ -109,18 +188,16 @@ static int engine_init_display(struct engine* engine) {
     eglQuerySurface(display, surface, EGL_WIDTH, &w);
     eglQuerySurface(display, surface, EGL_HEIGHT, &h);
 
+    //EGL関連データの保存
     engine->display = display;
     engine->context = context;
     engine->surface = surface;
     engine->width = w;
     engine->height = h;
-    engine->state.angle = 0;
 
-    // Initialize GL state.
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
-    glEnable(GL_CULL_FACE);
-    glShadeModel(GL_SMOOTH);
-    glDisable(GL_DEPTH_TEST);
+    //矩形表示の初期化
+    engine->state.angle = 0;
+    initDraw(engine);
 
     return 0;
 }
@@ -128,17 +205,17 @@ static int engine_init_display(struct engine* engine) {
 /**
  * Just the current frame in the display.
  */
+//毎フレームの描画処理
 static void engine_draw_frame(struct engine* engine) {
     if (engine->display == NULL) {
         // No display.
         return;
     }
 
-    // Just fill the screen with a color.
-    glClearColor(((float)engine->state.x)/engine->width, engine->state.angle,
-            ((float)engine->state.y)/engine->height, 1);
-    glClear(GL_COLOR_BUFFER_BIT);
+    //矩形描画
+    drawBox();
 
+    //ダブルバッファ入れ替え
     eglSwapBuffers(engine->display, engine->surface);
 }
 
@@ -168,7 +245,9 @@ static void engine_term_display(struct engine* engine) {
 static int32_t engine_handle_input(struct android_app* app, AInputEvent* event) {
     struct engine* engine = (struct engine*)app->userData;
     if (AInputEvent_getType(event) == AINPUT_EVENT_TYPE_MOTION) {
+        //アニメーション有効化   
         engine->animating = 1;
+        //タッチ位置を取得
         engine->state.x = AMotionEvent_getX(event, 0);
         engine->state.y = AMotionEvent_getY(event, 0);
         return 1;
@@ -232,6 +311,7 @@ void android_main(struct android_app* state) {
     struct engine engine;
 
     // Make sure glue isn't stripped.
+    // glueが削除されないように
     app_dummy();
 
     memset(&engine, 0, sizeof(engine));
@@ -249,6 +329,7 @@ void android_main(struct android_app* state) {
 
     if (state->savedState != NULL) {
         // We are starting with a previous saved state; restore from it.
+        // 以前の状態に戻す
         engine.state = *(struct saved_state*)state->savedState;
     }
 
