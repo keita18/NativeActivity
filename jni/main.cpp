@@ -27,7 +27,7 @@
 #include <android/log.h>
 #include <android_native_app_glue.h>
 
- #include "Draw.h"
+#include "Draw.h"
 
 #define TAG "native-activity"
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "native-activity", __VA_ARGS__))
@@ -217,8 +217,8 @@ static void engine_draw_frame(struct engine* engine) {
     }
 
     //矩形描画
+    // drawBox();
     drawInstance.DrawBox();
-    //drawBox();
 
     //ダブルバッファ入れ替え
     eglSwapBuffers(engine->display, engine->surface);

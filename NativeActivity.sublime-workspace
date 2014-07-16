@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"clas",
+				"class	class-..-(class)"
+			],
+			[
 				"acceror",
 				"accelerometerSensor"
 			],
@@ -87,15 +91,7 @@
 			"file": "jni/main.c",
 			"settings":
 			{
-				"buffer_size": 10177,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "jni/Application.mk",
-			"settings":
-			{
-				"buffer_size": 27,
+				"buffer_size": 12113,
 				"line_ending": "Unix"
 			}
 		},
@@ -103,7 +99,41 @@
 			"file": "jni/Android.mk",
 			"settings":
 			{
-				"buffer_size": 899,
+				"buffer_size": 910,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "jni/main.cpp",
+			"settings":
+			{
+				"buffer_size": 12113,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/keita/Dropbox/proj/emo-framework-0.2.0/Emo-Android/jni/Android.mk",
+			"settings":
+			{
+				"buffer_size": 1477,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 20 files for \"ndk\"\n\n/Users/keita/proj/gitroot/NativeActivity/AndroidManifest.xml:\n   15:              This will take care of integrating with our NDK code. -->\n\n/Users/keita/proj/gitroot/NativeActivity/bin/AndroidManifest.xml:\n   15:              This will take care of integrating with our NDK code. -->\n\n2 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 341,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "jni/Draw.cpp",
+			"settings":
+			{
+				"buffer_size": 1062,
 				"line_ending": "Unix"
 			}
 		}
@@ -223,6 +253,11 @@
 	},
 	"file_history":
 	[
+		"/Users/keita/proj/gitroot/NativeActivity/jni/Draw.h",
+		"/Users/keita/proj/gitroot/NativeActivity/AndroidManifest.xml",
+		"/Users/keita/proj/gitroot/NativeActivity/jni/Android.mk",
+		"/Users/keita/proj/gitroot/NativeActivity/NativeActivity.sublime-project",
+		"/Users/keita/proj/gitroot/NativeActivity/jni/Application.mk",
 		"/Users/tanjike/Dropbox/preference/Sublime Text 3/Packages/User/plugin/example.py",
 		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Android-Examples/assets/physics_linejoint.nut",
 		"/Users/tanjike/Dropbox/proj/emo-framework-0.2.0/Android-Examples/assets/physics_gearjoint.nut",
@@ -269,6 +304,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"drawBox",
+			"LENGTH",
+			"drawBox",
+			"DrawBox",
+			"drawBox",
+			"colorBuff",
+			"triangleBuffer",
+			"triangleBufferA",
+			"triangleBuffer",
+			"angle",
+			"ANGLE",
+			"angle",
+			"engine_draw_frame",
+			"drawBox",
+			"ndk",
 			"animating",
 			"colorspace",
 			"png_colorspace",
@@ -330,7 +380,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -339,15 +389,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10177,
+						"buffer_size": 12113,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8379,
-								8379
+								645,
+								662
 							]
 						],
 						"settings":
@@ -359,33 +409,183 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3029.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "jni/Application.mk",
+					"file": "jni/Android.mk",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 27,
+						"buffer_size": 910,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								726,
+								726
+							]
+						],
+						"settings":
+						{
+							"clone_numbers": 1,
+							"history_list_is_closing": true,
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "jni/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12113,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5935,
+								5935
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2537.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/keita/Dropbox/proj/emo-framework-0.2.0/Emo-Android/jni/Android.mk",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1477,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								283,
+								283
 							]
 						],
 						"settings":
 						{
 							"origin_encoding": "ASCII",
 							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 1,
+					"file": "jni/Android.mk",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 910,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								726,
+								726
+							]
+						],
+						"settings":
+						{
+							"clone_numbers": 1,
+							"history_list_is_closing": true,
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 341,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										156,
+										159
+									],
+									[
+										301,
+										304
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								9,
+								9
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -395,32 +595,32 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "jni/Android.mk",
+					"buffer": 5,
+					"file": "jni/Draw.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 899,
+						"buffer_size": 1062,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								614,
+								614
 							]
 						],
 						"settings":
 						{
-							"origin_encoding": "ASCII",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -428,7 +628,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 21.0
+		"height": 34.0
 	},
 	"input":
 	{
@@ -443,11 +643,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -478,7 +685,11 @@
 		[
 			[
 				"android",
-				"Emo-Android/jni/Android.mk"
+				"jni/Android.mk"
+			],
+			[
+				"androi",
+				"jni/Android.mk"
 			],
 			[
 				".mk",
@@ -502,7 +713,7 @@
 		[
 			[
 				"",
-				"/Users/tanjike/Dropbox/proj/adt_eclipse_work/android_work.sublime-project"
+				"~/Dropbox/proj/emo-framework.sublime-project"
 			]
 		],
 		"width": 380.0
@@ -521,7 +732,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 201.0,
 	"status_bar_visible": true,
 	"template_settings":
