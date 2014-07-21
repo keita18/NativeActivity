@@ -14,13 +14,20 @@
 #
 LOCAL_PATH := $(call my-dir)
 
+# libpngをAndroidで利用できるようにする
+# prebuildしたライブラリは直接リンクできない
 include $(CLEAR_VARS)
+LOCAL_MODULE := libpng15-prebuilt
+LOCAL_SRC_FILES := lib/libpng15.a
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/include
+include $(PREBUILT_STATIC_LIBRARY)
 
+include $(CLEAR_VARS)
 LOCAL_MODULE    := native-activity
-LOCAL_SRC_FILES := main.cpp Draw.cpp
-LOCAL_LDLIBS    := -llog -landroid -lEGL -lGLESv1_CM
+LOCAL_SRC_FILES := main.cpp Draw.cpp Png.cpp glu.cpp
+LOCAL_LDLIBS    := -llog -landroid -lEGL -lGLESv1_CM -lz
 LOCAL_STATIC_LIBRARIES := android_native_app_glue
-
+LOCAL_STATIC_LIBRARIES += libpng15-prebuilt
 include $(BUILD_SHARED_LIBRARY)
 
 $(call import-module,android/native_app_glue)

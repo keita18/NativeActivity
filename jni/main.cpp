@@ -21,12 +21,16 @@
 
 #include <EGL/egl.h>
 #include <GLES/gl.h>
+#include "glu.h"
 #include <math.h>
+
+#include <unistd.h> //sleep用
 
 #include <android/sensor.h>
 #include <android/log.h>
 #include <android_native_app_glue.h>
 
+#include "Png.h"
 #include "Draw.h"
 
 #define TAG "native-activity"
@@ -37,7 +41,7 @@
 static float angle = 0;
 
 static Draw drawInstance;
-
+static Png pngInstance;
 /**
  * Our saved state data.
  */
@@ -55,41 +59,27 @@ struct engine {
 
     ASensorManager* sensorManager;
     const ASensor* accelerometerSensor;
+    const ASensor* gyroscopeSensor;
     ASensorEventQueue* sensorEventQueue;
 
     int animating;
+
     EGLDisplay display;
     EGLSurface surface;
     EGLContext context;
+
     int32_t width;
     int32_t height;
+
+    float angle[3];
+
     struct saved_state state;
+
+    AAssetManager* assetManager;
 };
 
-void gluPerspective(double fovy, double aspect, double zNear, double zFar) {
-    GLfloat xmin, xmax, ymin, ymax;
-    ymax = zNear * tan(fovy * M_PI / 360.0);
-    ymin = -ymax;
-    xmin = ymin * aspect;
-    xmax = ymax * aspect;
-    glFrustumf(xmin, xmax, ymin, ymax, zNear, zFar);
-}
-
-//頂点リスト
-#define LENGTH (15)
-short triangleBuffer[] = {
-    -LENGTH / 2,            -LENGTH / 2,            0,
-    LENGTH - LENGTH / 2,    -LENGTH / 2,            0,
-    -LENGTH / 2,            LENGTH - LENGTH / 2,    0,
-    LENGTH -LENGTH / 2,    LENGTH - LENGTH / 2,    0,
-};
-
-float colorBuffer[] = {
-    1.0, 0.0, 0.0, 1.0,
-    0.0, 1.0, 0.0, 1.0,
-    0.0, 0.0, 1.0, 1.0,
-    0.5, 0.5, 0.0, 1.0,
-};
+#undef PI
+#define PI 3.1415926535897932f
 
 void initDraw(struct engine* engine)
 {
@@ -100,42 +90,34 @@ void initDraw(struct engine* engine)
     glClearColor(.7f, .7f, .9f, 1.f);
     glShadeModel(GL_SMOOTH);
 
-    float ratio = (float) engine->width / (float) engine->height;
+    float ratio  = (float) engine->width / (float) engine->height;
     glViewport(0, 0, (int)engine->width, (int)engine->height);
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(40.0, ratio , 0.1, 100 );
+    //gluPerspective(40.0, ratio , 0.1, 100 );
 };
 
-void drawBox(void)
-{
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glTranslatef(0.0, 0.0, -50.0);
+void prepareFrame(struct engine* engine) {
 
-    angle = (angle + 2);
-    if ( angle > 360 )
-    {
-        angle = 0;
-    }
+  // ViewPortを指定
+  glViewport(0, 0, engine->width, engine->height);
+  // 塗りつぶし色設定
+  glClearColor(.7f, .7f, .9f, 1.f);
+  // カラーバッファ、デプスバッファをクリアー
+  glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
-    //角度設定
-    glRotatef(angle, 0, 0, 1.0f);
-    //バッファーをクリア
-    glClear(GL_COLOR_BUFFER_BIT);
-    //頂点リスト指定
-    glVertexPointer(3, GL_SHORT, 0, triangleBuffer);
-    //頂点リスト有効化
-    glEnableClientState(GL_VERTEX_ARRAY);
-    //頂点リスト指定
-    glColorPointer(4, GL_FLOAT, 0, colorBuffer);
-    //頂点カラーリストの有効化
-    glEnableClientState(GL_COLOR_ARRAY);
-    //三角形描画
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-    glDisableClientState(GL_VERTEX_ARRAY);
+  // PROJECTIONに切替
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  // 透視法射影設定
+  gluPerspective(45, (float) engine->width / engine->height, 0.5f, 500);
+
+  // MODELVIEWに切替
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
 }
+
 
 /**
  * Initialize an EGL context for the current display.
@@ -160,8 +142,10 @@ static int engine_init_display(struct engine* engine) {
             EGL_BLUE_SIZE, 8,
             EGL_GREEN_SIZE, 8,
             EGL_RED_SIZE, 8,
+            EGL_DEPTH_SIZE, 16,
             EGL_NONE
     };
+    
     EGLDisplay display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
 
     eglInitialize(display, 0, 0);
@@ -201,7 +185,11 @@ static int engine_init_display(struct engine* engine) {
 
     //矩形表示の初期化
     engine->state.angle = 0;
-    initDraw(engine);
+    
+    //--
+    //initDraw(engine);
+    //--
+    drawInstance.InitCube(engine->assetManager);
 
     return 0;
 }
@@ -216,10 +204,21 @@ static void engine_draw_frame(struct engine* engine) {
         return;
     }
 
+    //--
+
     //矩形描画
     // drawBox();
-    drawInstance.DrawBox();
+    // drawInstance.DrawBox();
 
+    // //ダブルバッファ入れ替え
+    // eglSwapBuffers(engine->display, engine->surface);
+
+    //--
+
+    // 描画前処理
+    prepareFrame(engine);
+    // ポリゴン描画
+    drawInstance.DrawCube();
     //ダブルバッファ入れ替え
     eglSwapBuffers(engine->display, engine->surface);
 }
@@ -319,6 +318,9 @@ void android_main(struct android_app* state) {
     // glueが削除されないように
     app_dummy();
 
+    //デバッグできるようにsleep
+    sleep(10);
+
     memset(&engine, 0, sizeof(engine));
     state->userData = &engine;
     state->onAppCmd = engine_handle_cmd;
@@ -331,6 +333,12 @@ void android_main(struct android_app* state) {
             ASENSOR_TYPE_ACCELEROMETER);
     engine.sensorEventQueue = ASensorManager_createEventQueue(engine.sensorManager,
             state->looper, LOOPER_ID_USER, NULL, NULL);
+    // ジャイロスコープのデータ取得準備
+    engine.gyroscopeSensor = ASensorManager_getDefaultSensor(
+            engine.sensorManager, ASENSOR_TYPE_GYROSCOPE );
+
+    // AssetManagerの取得
+    engine.assetManager = state->activity->assetManager;
 
     if (state->savedState != NULL) {
         // We are starting with a previous saved state; restore from it.
